@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>org.example.CustomPlugin</id>
+    <name>CustomPlugin</name>
+    <vendor email="support@gmail.com" url="http://www.google.com">Plugin</vendor>
+    <description>Plugin to create a new project and import Zia SDK</description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+
+    <projectListeners>
+        <listener class="listeners.CustomGradleBuildListener" topic="com.android.tools.idea.gradle.project.build.GradleBuildListener"/>
+        <listener class="listeners.CustomGradleSyncListener" topic="com.android.tools.idea.gradle.project.sync.GradleSyncListener"/>
+    </projectListeners>
+
+    <actions>
+        <action id="CustomProjectPlugin" class="CustomSDKProject" text="New Custom Project" description="Plugin to create custom projects">
+            <add-to-group group-id="WelcomeScreen.QuickStart" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
